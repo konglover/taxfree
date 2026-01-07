@@ -13,7 +13,7 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null; then
+if ! command -v docker compose &> /dev/null; then
     echo "❌ Docker Compose 未安装，请先安装 Docker Compose"
     exit 1
 fi
@@ -30,15 +30,15 @@ fi
 
 # 构建镜像
 echo "📦 构建 Docker 镜像..."
-docker-compose build
+docker compose build
 
 # 停止旧容器
 echo "🛑 停止旧容器..."
-docker-compose down
+docker compose down
 
 # 启动服务
 echo "🚀 启动服务..."
-docker-compose up -d
+docker compose up -d
 
 # 等待服务启动
 echo "⏳ 等待服务启动..."
@@ -46,25 +46,40 @@ sleep 5
 
 # 检查服务状态
 echo "📊 检查服务状态..."
-docker-compose ps
+docker compose ps
 
 # 检查健康状态
 echo "🏥 检查后端健康状态..."
 if curl -f http://localhost:3000/health > /dev/null 2>&1; then
     echo "✅ 后端服务运行正常"
 else
-    echo "⚠️  后端服务可能未正常启动，请检查日志: docker-compose logs backend"
+    echo "⚠️  后端服务可能未正常启动，请检查日志: docker compose logs backend"
 fi
 
 echo ""
 echo "✅ 部署完成！"
 echo ""
 echo "📝 常用命令："
-echo "  查看日志: docker-compose logs -f"
-echo "  停止服务: docker-compose down"
-echo "  重启服务: docker-compose restart"
-echo "  查看状态: docker-compose ps"
+echo "  查看日志: docker compose logs -f"
+echo "  停止服务: docker compose down"
+echo "  重启服务: docker compose restart"
+echo "  查看状态: docker compose ps"
 echo ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
