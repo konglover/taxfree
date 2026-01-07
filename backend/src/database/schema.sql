@@ -1,0 +1,31 @@
+-- 创建数据库
+CREATE DATABASE IF NOT EXISTS taxfree_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE taxfree_db;
+
+-- 创建用户表
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
