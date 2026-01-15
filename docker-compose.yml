@@ -1,5 +1,4 @@
 version: '3.8'
-
 # 优化版 Docker Compose 配置 - 适用于低配置服务器（1核CPU、1G内存、5G硬盘）
 # 优化点：
 # 1. 限制容器内存和 CPU 使用
@@ -7,7 +6,6 @@ version: '3.8'
 # 3. 配置日志轮转，防止磁盘占满
 # 4. 优化健康检查间隔
 # 5. 设置容器重启策略
-
 services:
   backend:
     build:
@@ -50,7 +48,6 @@ services:
       timeout: 5s
       retries: 3
       start_period: 15s
-
   frontend:
     build:
       context: .
@@ -59,6 +56,7 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       backend:
         condition: service_healthy
@@ -66,6 +64,8 @@ services:
       - taxfree-network
     environment:
       - VITE_API_BASE_URL=${VITE_API_BASE_URL:-http://localhost:3000/api}
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     
     # 资源限制
     deploy:
@@ -91,13 +91,11 @@ services:
       timeout: 3s
       retries: 3
       start_period: 10s
-
 networks:
   taxfree-network:
     driver: bridge
     driver_opts:
       com.docker.network.driver.mtu: 1500
-
 # 卷配置（可选：如果需要持久化日志）
 # volumes:
 #   backend-data:
