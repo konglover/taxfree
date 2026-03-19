@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "tax-free-frontend",
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1",
+      "check": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 200,
+      "dest": "/frontend/index.html"
+    }
+  ]
+}

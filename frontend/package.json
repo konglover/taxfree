@@ -14,13 +14,14 @@
     "element-plus": "^2.13.0",
     "html5-qrcode": "^2.3.8",
     "jsbarcode": "^3.12.1",
+    "qrcode": "^1.5.4",
     "jsonwebtoken": "^9.0.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.3",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-basic-ssl": "^2.1.0",
+    "@vitejs/plugin-basic-ssl": "^1.2.0",
     "@vitejs/plugin-vue": "^5.0.0",
     "selfsigned": "^5.4.0",
     "vite": "^5.0.8"

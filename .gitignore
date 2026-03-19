@@ -8,6 +8,10 @@ dist/
 build/
 */build/
 
+# Reference/Legacy (Exclude from deployment)
+Receipt\ Management\ Tool/
+backend/
+
 # Environment variables
 .env
 .env.local

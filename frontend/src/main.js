@@ -15,10 +15,6 @@ const pinia = createPinia();
 app.use(pinia);
 app.use(router);
 
-// 初始化认证状态
-import { useAuthStore } from './stores/auth.js';
-const authStore = useAuthStore();
-authStore.initAuth();
 app.use(ElementPlus, {
   locale: zhCn,
 });
